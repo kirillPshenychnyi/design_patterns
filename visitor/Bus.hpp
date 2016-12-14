@@ -21,14 +21,11 @@ public:
 
 	}
 
-    void accept( IVisitor & _visitor) const override
+    	void accept( IVisitor & _visitor) const override
 	{
 		_visitor.visit(*this);
 	}
 
-	Bus & operator = (const Bus &) = delete;
-
-	Bus(const Bus &) = delete;
 
 /***************************************************************************/
 

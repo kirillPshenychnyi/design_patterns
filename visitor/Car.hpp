@@ -53,10 +53,6 @@ public:
 		,	m_type( _type) 
 	{}
 
-	Car(const Car &) = delete;
-
-	Car & operator = (const Car &) = delete;
-
 /***************************************************************************/
 
 	void accept(IVisitor & _visitor) const override
