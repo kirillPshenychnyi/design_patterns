@@ -26,7 +26,6 @@ public:
 		_visitor.visit(*this);
 	}
 
-
 /***************************************************************************/
 
 	int getPassengersAmount() const;
