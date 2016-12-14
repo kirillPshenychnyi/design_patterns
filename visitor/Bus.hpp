@@ -26,10 +26,6 @@ public:
 		_visitor.visit(*this);
 	}
 
-	Bus & operator = (const Bus &) = delete;
-
-	Bus(const Bus &) = delete;
-
 /***************************************************************************/
 
 	int getPassengersAmount() const;
