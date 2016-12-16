@@ -15,7 +15,8 @@ class AbstractFactory {
 public:
 
 /***************************************************************************/	
-	irtual ~AbstractFactory() = default;
+	
+	virtual ~AbstractFactory() = default;
 	
 	virtual Icon * createIcon() = 0;
 
