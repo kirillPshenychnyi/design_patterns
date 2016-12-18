@@ -1,13 +1,15 @@
-#ifndef __BANK_HPP__
-#define __BANK_HPP__
+#ifndef __LINE_HPP__
+#define __LINE_HPP__
 
 /***************************************************************************/
 
-#include <string>
+#include "point.hpp"
+#include "igrahical_element.hpp"
+#include <iostream>
 
 /***************************************************************************/
 
-class Bank
+class Line : public IGraphicalElement
 {
 
 /***************************************************************************/
@@ -15,49 +17,64 @@ class Bank
 public:
 
 /***************************************************************************/
-	// forbid copying and assignment
 
-	Bank & operator = (const Bank & _bank) = delete;
+	Line(Point _begin, Point _end)
+		:	m_begin(_begin)
+		,	m_end(_end)
+	{
+	}
 
-	Bank(const Bank & _bank) = delete;
-
-/***************************************************************************/
-
-	// create/get instance
-
-	static Bank * getInstance();
-
-	// some useful methods
-
-	void withdraw(std::string const & _account, int _amount);
-
-	void deposit(std::string const & _acount, int _amount);
+	Point getBegin() const;
 	
-/***************************************************************************/
+	Point getEnd() const;
 
-private:
-
-/***************************************************************************/
-	// private default constructor and destructor
-
-	Bank();
-
-	~Bank();
+    void display() const override;
 
 /***************************************************************************/
 
 private:
 
 /***************************************************************************/
-	// static instance
 
-	static Bank * ms_Instance;
+	const Point m_begin;
+
+	const Point m_end;
 
 /***************************************************************************/
 
 };
 
+/***************************************************************************/
+
+inline Point
+Line::getBegin() const
+{
+	return m_begin;
+}
 
 /***************************************************************************/
 
-#endif // __BANK_HPP__
+inline Point
+Line::getEnd() const
+{
+	return m_end;
+}
+
+/***************************************************************************/
+
+inline void 
+Line::display() const
+{
+	std::cout << "Displaying line:" << std::endl;
+	
+	std::cout << "Begin:" << std::endl;
+	std::cout << m_begin;
+
+	std::cout << "End:" << std::endl;
+	std::cout << m_end;
+
+}
+
+/***************************************************************************/
+
+#endif // !__LINE_HPP__

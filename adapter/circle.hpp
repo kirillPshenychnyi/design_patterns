@@ -1,13 +1,14 @@
-#ifndef __BANK_HPP__
-#define __BANK_HPP__
+#ifndef __CIRCLE_HPP__
+#define __CIRCLE_HPP__
 
 /***************************************************************************/
 
-#include <string>
+#include "igrahical_element.hpp"
+#include "point.hpp"
 
 /***************************************************************************/
 
-class Bank
+class Circle : public IGraphicalElement
 {
 
 /***************************************************************************/
@@ -15,49 +16,51 @@ class Bank
 public:
 
 /***************************************************************************/
-	// forbid copying and assignment
 
-	Bank & operator = (const Bank & _bank) = delete;
+	Circle( Point _center, double _radius)
+		:	m_center(_center)
+		,	m_radius(_radius)
+	{}
 
-	Bank(const Bank & _bank) = delete;
+	Point getCenter() const;
 
-/***************************************************************************/
-
-	// create/get instance
-
-	static Bank * getInstance();
-
-	// some useful methods
-
-	void withdraw(std::string const & _account, int _amount);
-
-	void deposit(std::string const & _acount, int _amount);
-	
-/***************************************************************************/
-
-private:
-
-/***************************************************************************/
-	// private default constructor and destructor
-
-	Bank();
-
-	~Bank();
+	void display() const override;
 
 /***************************************************************************/
 
 private:
 
 /***************************************************************************/
-	// static instance
 
-	static Bank * ms_Instance;
+	const Point m_center;
+
+	const double m_radius;
 
 /***************************************************************************/
 
 };
 
+/***************************************************************************/
+
+#endif // !__CIRCLE_HPP__
 
 /***************************************************************************/
 
-#endif // __BANK_HPP__
+inline Point 
+Circle::getCenter() const
+{
+	return m_center;
+}
+
+/***************************************************************************/
+
+inline void
+Circle::display() const
+{
+	std::cout << "Displaying circle with radius " << m_radius << std::endl;
+
+	std::cout << m_center;
+
+}
+
+/***************************************************************************/

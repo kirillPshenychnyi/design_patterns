@@ -1,63 +1,57 @@
-#ifndef __BANK_HPP__
-#define __BANK_HPP__
+#ifndef __EDITOR_HPP__
+#define __EDITOR_HPP__
 
 /***************************************************************************/
 
-#include <string>
+#include <vector>
+#include "igrahical_element.hpp"
+#include "text.hpp"
+#include "point.hpp"
+#include "text_adapter.hpp"
+#include <algorithm>
+#include <memory>
 
 /***************************************************************************/
 
-class Bank
+class Editor
 {
+
+/***************************************************************************/
+
+	typedef
+		std::unique_ptr< IGraphicalElement >
+		ElementPtr;
+
+	typedef
+		std::vector< ElementPtr >
+		Elements;
 
 /***************************************************************************/
 
 public:
 
 /***************************************************************************/
-	// forbid copying and assignment
 
-	Bank & operator = (const Bank & _bank) = delete;
-
-	Bank(const Bank & _bank) = delete;
-
-/***************************************************************************/
-
-	// create/get instance
-
-	static Bank * getInstance();
-
-	// some useful methods
-
-	void withdraw(std::string const & _account, int _amount);
-
-	void deposit(std::string const & _acount, int _amount);
+	void addLine(Point _begin, Point _end); 
 	
-/***************************************************************************/
+	void addCircle(Point _center, double _radius);
+	
+	void addTexElement(Text const & _text, Point _start);
 
-private:
-
-/***************************************************************************/
-	// private default constructor and destructor
-
-	Bank();
-
-	~Bank();
+	void display() const;
 
 /***************************************************************************/
 
 private:
 
 /***************************************************************************/
-	// static instance
 
-	static Bank * ms_Instance;
+	Elements m_elements;
 
 /***************************************************************************/
 
 };
 
-
 /***************************************************************************/
 
-#endif // __BANK_HPP__
+#endif // !__EDITOR_HPP__

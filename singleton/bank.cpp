@@ -31,7 +31,6 @@ Bank::getInstance()
 		// the first time object created 
 		ms_Instance = new Bank();
 
-		
 		struct Deleter
 		{
 			~Deleter()
